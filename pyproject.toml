@@ -1,0 +1,15 @@
+[project]
+name = "file-join"
+version = "0.1.0"
+description = "A simple command-line utility to concatenate multiple files into one"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[project.scripts]
+fj = "file_join.__main__:main"
+file-join = "file_join.__main__:main"
+
+[build-system]
+requires = ["uv_build>=0.8.15,<0.9.0"]
+build-backend = "uv_build"
