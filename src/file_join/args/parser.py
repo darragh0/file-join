@@ -14,7 +14,7 @@ def _parse_opt(arg: str, arg_i: int, argc: int) -> tuple[str, OptionType]:
             name = opt["long"].lstrip("-")
 
             if req_type is bool:
-                return name, True
+                return name.replace("-", "_"), True
 
             val_i = arg_i + 1
             if not val_i < argc:
@@ -31,7 +31,7 @@ def _parse_opt(arg: str, arg_i: int, argc: int) -> tuple[str, OptionType]:
                     ExitCode.ILLEGAL_OPTION_TYPE,
                 )
 
-            return name, val
+            return name.replace("-", "_"), val
 
     perr(f"illegal option -- {Style.YLW}{arg}{Style.RES}", ExitCode.ILLEGAL_OPTION)
     assert False, "unreachable"

@@ -23,6 +23,7 @@ class _ParsedOpt:
     force: bool = False
     verbose: bool = False
     output: str = "./joined.txt"
+    no_quote: bool = False
 
 
 @dataclass
@@ -41,14 +42,25 @@ OPTIONS: list[_Option] = [
         "default": "./joined.txt",
     },
     {
+        "short": "-nq",
+        "long": "--no-quote",
+        "type": bool,
+        "help": "Do not wrap file contents in code blocks",
+        "default": False,
+    },
+    {
         "short": "-f",
         "long": "--force",
         "type": bool,
         "help": "Force overwrite of output file without prompt",
+        "default": False,
     },
     {
         "long": "--verbose",
         "type": bool,
         "help": "Enable verbose output",
+        "default": False,
     },
 ]
+
+LONGEST_SHORT_OPT = max(len(opt.get("short", "")) for opt in OPTIONS)
